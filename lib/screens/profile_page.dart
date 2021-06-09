@@ -10,6 +10,8 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  //
+  final _formKey = GlobalKey<FormState>();
   bool _isLoggedIn = false;
   static GoogleSignIn _googleSignIn = GoogleSignIn(scopes: ['email']);
   Future<void> _login() async {
@@ -45,17 +47,25 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
               TextButton(onPressed: () => _logout, child: Text("Logout")),
             ])
-          : ElevatedButton(
-              onPressed: () => _login(),
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all<Color>(Colors.black),
-              ),
-              child: Row(children: [
-                Icon(Icons.login),
-                SizedBox(width: 20),
-                Text("LOGIN WITH GOOGLE"),
-              ]),
-            ),
+          : _loginColumn(),
     ));
+  }
+
+  Column _loginColumn() {
+    return Column(
+      children: [
+        ElevatedButton(
+          onPressed: () => _login(),
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all<Color>(Colors.black),
+          ),
+          child: Row(children: [
+            Icon(Icons.login),
+            SizedBox(width: 20),
+            Text("LOGIN WITH GOOGLE"),
+          ]),
+        ),
+      ],
+    );
   }
 }

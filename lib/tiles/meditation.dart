@@ -10,18 +10,19 @@ class MeditationScreen extends StatefulWidget {
 
 class _MeditationScreenState extends State<MeditationScreen> {
   bool _isPlaying = false;
-  Icon _icon = Icon(Icons.pause);
+  Icon _icon = Icon(Icons.play_arrow);
   static AudioCache cache = AudioCache();
   AudioPlayer player = AudioPlayer();
 
   @override
   Widget build(BuildContext context) {
-    void playHandler() async {
+    void playHandler(String string) {
       if (_isPlaying) {
         player.stop();
       } else {
-        player = await cache.play('audio/meditate1.mp3');
+        player = cache.play('audio/meditate1.mp3') as AudioPlayer;
       }
+      debugPrint(string);
     }
 
     return Scaffold(
@@ -53,18 +54,18 @@ class _MeditationScreenState extends State<MeditationScreen> {
                   iconSize: 130,
                   icon: _icon,
                   onPressed: () {
-                    playHandler();
                     if (_isPlaying == true) {
                       setState(() {
                         _isPlaying = false;
-                        _icon = Icon(Icons.pause);
+                        _icon = Icon(Icons.play_arrow);
                       });
                     } else {
                       setState(() {
                         _isPlaying = true;
-                        _icon = Icon(Icons.play_arrow);
+                        _icon = Icon(Icons.pause);
                       });
                     }
+                    playHandler("I'm playing");
                     debugPrint(
                         "button pressed , value of isplaying is $_isPlaying");
                   },

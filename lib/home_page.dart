@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:well_being_app/activities_page.dart';
 import 'package:well_being_app/home_elements/stepper.dart';
-import 'package:well_being_app/journal_page.dart';
-import 'package:well_being_app/profile_page.dart';
+import 'package:well_being_app/screens/journal_page.dart';
+import 'package:well_being_app/screens/profile_page.dart';
+import 'package:well_being_app/resources/color_palette.dart';
 
 class HomeScreen extends StatefulWidget {
   static String id;
@@ -27,7 +28,10 @@ class _HomeScreenState extends State<HomeScreen> {
       onWillPop: () => SystemNavigator.pop(),
       child: SafeArea(
         child: Scaffold(
-          appBar: AppBar(),
+          appBar: AppBar(
+            backgroundColor: bg_black,
+            toolbarHeight: 60,
+          ),
           //Drawer is side pop up
           //inside the drawer we have the stepper widget
           drawer: StepperWidget(),

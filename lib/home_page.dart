@@ -1,10 +1,15 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:well_being_app/activities_page.dart';
+import 'package:provider/provider.dart';
+import 'package:well_being_app/screens/activities_page.dart';
 import 'package:well_being_app/home_elements/stepper.dart';
+import 'package:well_being_app/services/auth.dart';
 import 'package:well_being_app/screens/journal_page.dart';
 import 'package:well_being_app/screens/profile_page.dart';
 import 'package:well_being_app/resources/color_palette.dart';
+import 'package:well_being_app/services/database.dart';
+import 'package:well_being_app/services/user.dart';
 
 class HomeScreen extends StatefulWidget {
   static String id;
@@ -21,38 +26,61 @@ class _HomeScreenState extends State<HomeScreen> {
     JournalScreen(),
     ProfileScreen()
   ];
-
+  AuthService _auth = new AuthService();
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () => SystemNavigator.pop(),
-      child: SafeArea(
-        child: Scaffold(
-          appBar: AppBar(
-            backgroundColor: bg_black,
-            toolbarHeight: 60,
-          ),
-          //Drawer is side pop up
-          //inside the drawer we have the stepper widget
-          drawer: StepperWidget(),
-          body: _children[_currentIndex],
-          bottomNavigationBar: BottomNavigationBar(
-            currentIndex: _currentIndex,
-            onTap: onTabTapped,
-            items: [
-              BottomNavigationBarItem(
-                icon: Icon(Icons.home),
-                label: ("Home"),
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.book),
-                label: ("Journal"),
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.account_circle_rounded),
-                label: ("Profile"),
-              ),
-            ],
+    final user = Provider.of<User>(context);
+    return Provider<UserData>.value(
+      value: UserData(uid: user.uid),
+      child: WillPopScope(
+        onWillPop: () => SystemNavigator.pop(),
+        child: SafeArea(
+          child: Scaffold(
+            appBar: AppBar(
+              backgroundColor: bg_black,
+              toolbarHeight: 60,
+              elevation: 0.0,
+              actions: <Widget>[
+                ElevatedButton.icon(
+                  icon: Icon(Icons.person),
+                  onPressed: () async {
+                    await _auth.signOut();
+                  },
+                  label: Text('logout'),
+                )
+              ],
+            ),
+            //Drawer is side pop up
+            //inside the drawer we have the stepper widget
+            drawer: StepperWidget(),
+            body: _children[_currentIndex],
+            bottomNavigationBar: BottomNavigationBar(
+              currentIndex: _currentIndex,
+              onTap: onTabTapped,
+              items: [
+                BottomNavigationBarItem(
+                  icon: Icon(
+                    Icons.home,
+                    size: 32.0,
+                  ),
+                  label: (""),
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(
+                    Icons.book,
+                    size: 32.0,
+                  ),
+                  label: (""),
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(
+                    Icons.account_circle_rounded,
+                    size: 32.0,
+                  ),
+                  label: (""),
+                ),
+              ],
+            ),
           ),
         ),
       ),

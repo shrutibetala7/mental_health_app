@@ -54,7 +54,7 @@ class _ActivityScreenState extends State<ActivityScreen> {
                 homeTile(journal_bg_dark1, FontAwesomeIcons.dog, ''),
                 homeTile(
                     journal_bg_light2, FontAwesomeIcons.solidSmileBeam, ''),
-                homeTile(journal_bg_light1, FontAwesomeIcons.hollyBerry, ''),
+                homeTile(journal_bg_light1, FontAwesomeIcons.clock, ''),
                 homeTile(bg_light1, FontAwesomeIcons.podcast, 'PodcastScreen'),
                 homeTile(bg_light2, FontAwesomeIcons.yinYang, ''),
                 homeTile(bg_dark1, FontAwesomeIcons.book, ''),

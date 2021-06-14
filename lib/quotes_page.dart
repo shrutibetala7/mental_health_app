@@ -14,7 +14,7 @@ class QuoteScreen extends StatelessWidget {
 
     return Scaffold(
       body: GestureDetector(
-        onTap: () => Navigator.pushNamed(context, 'HomeScreen'),
+        onTap: () => Navigator.pushNamed(context, 'wrapper'),
         child: Container(
             padding: EdgeInsets.all(10),
             height: MediaQuery.of(context).size.height,

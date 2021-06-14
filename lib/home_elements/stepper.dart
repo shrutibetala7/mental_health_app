@@ -81,21 +81,22 @@ class _StepperWidgetState extends State<StepperWidget> {
                 {VoidCallback onStepContinue, var onStepCancel}) {
               return Row(
                 children: [
-                  TextButton(
+                  ElevatedButton(
                     onPressed: onStepCancel,
                     child: Text(
                         (currentStep == 1) ? "Take Me There" : "Let's Do It"),
-                    style: ButtonStyle(
-                        backgroundColor:
-                            MaterialStateProperty.all<Color>(Colors.black)),
+                    // style: ButtonStyle(
+                    //     backgroundColor:
+                    //         MaterialStateProperty.all<Color>(Colors.black),
+                    // ),
                   ),
                   SizedBox(width: 10.0),
-                  TextButton(
+                  ElevatedButton(
                     onPressed: onStepContinue,
                     child: Text("Done"),
-                    style: ButtonStyle(
-                        backgroundColor:
-                            MaterialStateProperty.all<Color>(Colors.amber)),
+                    // style: ButtonStyle(
+                    //     backgroundColor:
+                    //         MaterialStateProperty.all<Color>(Colors.amber)),
                   )
                 ],
               );
@@ -109,7 +110,7 @@ class _StepperWidgetState extends State<StepperWidget> {
               debugPrint("Pressed"),
               if (currentStep == 1)
                 {
-                  Navigator.pushNamed(context, 'MeditationScreen'),
+                  //Navigator.pushNamed(context, 'MeditationScreen'),
                 }
             },
           )

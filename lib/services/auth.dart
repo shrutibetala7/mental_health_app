@@ -29,7 +29,10 @@ class AuthService {
       UserCredential result = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
       User user = result.user;
-      DatabaseService(uid: user.uid).updateUserData('Buddy', 100, false);
+      DatabaseService(uid: user.uid).setUserData('Buddy', 100, false);
+      DatabaseService(uid: user.uid)
+          .createNewNoteCollection('Title..', 'About it');
+      DatabaseService(uid: user.uid).createNewGratitudeCollection('Gratitude');
       return user;
     } catch (e) {
       print("Error with registration ${e.toString()}");

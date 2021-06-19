@@ -5,12 +5,14 @@ import 'package:provider/provider.dart';
 import 'package:well_being_app/authentication/register.dart';
 import 'package:well_being_app/authentication/sign_in.dart';
 import 'package:well_being_app/home_page.dart';
+import 'package:well_being_app/maps/googlemap.dart';
 import 'package:well_being_app/services/auth.dart';
 import 'package:well_being_app/resources/color_palette.dart';
 import 'package:well_being_app/tiles/meditation.dart';
 import 'package:well_being_app/screens/profile_page.dart';
 import 'package:well_being_app/quotes_page.dart';
 import 'package:well_being_app/tiles/podcast_screen.dart';
+import 'package:well_being_app/tiles/pomodoro.dart';
 
 import 'quotes_page.dart';
 
@@ -57,6 +59,7 @@ class MyApp extends StatelessWidget {
           'ProfileScreen': (context) => ProfileScreen(),
           'MeditationScreen': (context) => MeditationScreen(),
           'PodcastScreen': (context) => PodcastScreen(),
+          'pomodoroScreen': (context) => CountDownTimer(),
         },
       ),
     );

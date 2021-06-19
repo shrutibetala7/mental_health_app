@@ -40,6 +40,12 @@ dependencies:
   provider: ^5.0.0
   cloud_firestore: ^2.2.1
   flutter_spinkit: ^4.1.2
+  percent_indicator: "^2.1.5"
+  google_maps_flutter: ^2.0.6
+  http: ^0.13.3
+  geolocator: ^7.1.0
+  geocoding: ^2.0.0
+
 
 
 dev_dependencies:

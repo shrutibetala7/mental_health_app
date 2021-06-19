@@ -208,8 +208,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       else
         _workDone = false;
 
-      DatabaseService(uid: userData.uid)
-          .updateUserData(userData.name, userData.mood, _workDone);
+      DatabaseService(uid: userData.uid).updateWorkDone(_workDone);
 
       //debugPrint('Work done is ${userData.workDone.toString()}');
     });

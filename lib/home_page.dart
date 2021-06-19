@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:well_being_app/screens/activities_page.dart';
 import 'package:well_being_app/home_elements/stepper.dart';
 import 'package:well_being_app/services/auth.dart';
-import 'package:well_being_app/screens/journal_page.dart';
+import 'package:well_being_app/screens/journal/journal_page.dart';
 import 'package:well_being_app/screens/profile_page.dart';
 import 'package:well_being_app/resources/color_palette.dart';
 import 'package:well_being_app/services/database.dart';
@@ -30,12 +30,20 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<User>(context);
-    return Provider<UserData>.value(
-      value: UserData(uid: user.uid),
+    return MultiProvider(
+      providers: [
+        Provider<UserData>.value(
+          value: UserData(uid: user.uid),
+        ),
+        Provider<UserNote>.value(
+          value: UserNote(uid: user.uid),
+        ),
+      ],
       child: WillPopScope(
         onWillPop: () => SystemNavigator.pop(),
         child: SafeArea(
           child: Scaffold(
+            drawerScrimColor: Colors.transparent,
             appBar: AppBar(
               backgroundColor: bg_black,
               toolbarHeight: 60,

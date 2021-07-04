@@ -1,6 +1,5 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
-import 'package:audioplayers/audioplayers.dart';
 
 class MeditationScreen extends StatefulWidget {
   const MeditationScreen({Key key}) : super(key: key);

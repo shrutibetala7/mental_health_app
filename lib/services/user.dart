@@ -12,5 +12,7 @@ class UserNote {
   final String title;
   final String description;
   final String gratitude;
-  UserNote({this.uid, this.gratitude, this.description, this.title});
+  final String noteId;
+  UserNote(
+      {this.uid, this.gratitude, this.description, this.title, this.noteId});
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:well_being_app/resources/color_palette.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -50,16 +51,20 @@ class _ActivityScreenState extends State<ActivityScreen> {
               spacing: 30,
               runSpacing: 20,
               children: [
-                homeTile(journal_bg_dark2, FontAwesomeIcons.userFriends, ''),
-                homeTile(journal_bg_dark1, FontAwesomeIcons.dog, ''),
-                homeTile(
-                    journal_bg_light2, FontAwesomeIcons.solidSmileBeam, ''),
+                homeTile(journal_bg_dark2, FontAwesomeIcons.userFriends,
+                    'assets/icons/chatbot.svg', 'chatbotScreen'),
+                homeTile(journal_bg_dark1, FontAwesomeIcons.dog,
+                    'assets/icons/meditation.svg', ''),
+                homeTile(journal_bg_light2, FontAwesomeIcons.solidSmileBeam,
+                    'assets/icons/yoga.svg', ''),
                 homeTile(journal_bg_light1, FontAwesomeIcons.clock,
-                    'pomodoroScreen'),
-                homeTile(bg_light1, FontAwesomeIcons.podcast, 'PodcastScreen'),
-                homeTile(bg_light2, FontAwesomeIcons.yinYang, ''),
-                homeTile(bg_dark1, FontAwesomeIcons.book, ''),
-                homeTile(bg_dark2, FontAwesomeIcons.map, ''),
+                    'assets/icons/todo.svg', 'pomodoroScreen'),
+                homeTile(
+                    bg_light1, FontAwesomeIcons.podcast, null, 'PodcastScreen'),
+                homeTile(bg_light2, FontAwesomeIcons.yinYang, null, ''),
+                homeTile(bg_dark1, FontAwesomeIcons.book,
+                    'assets/icons/book.svg', 'ebookScreen'),
+                homeTile(bg_dark2, FontAwesomeIcons.map, null, 'nearbyWidget'),
               ],
             ),
           ],
@@ -68,17 +73,27 @@ class _ActivityScreenState extends State<ActivityScreen> {
     );
   }
 
-  homeTile(Color color, IconData icon, String destination) {
+  homeTile(Color color, IconData icon, String path, String destination) {
+    List<double> _stops = [0.0, 0.2, 1.6];
     return GestureDetector(
       child: Container(
         //margin: EdgeInsets.fromLTRB(15, 5, 15, 5),
         height: MediaQuery.of(context).size.width / 2.3,
         width: MediaQuery.of(context).size.width / 2.3,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          color: color,
-        ),
-        child: Center(child: FaIcon(icon, size: 60, color: Colors.white)),
+            borderRadius: BorderRadius.circular(20),
+            gradient: LinearGradient(
+              end: Alignment.bottomRight,
+              begin: Alignment.topLeft,
+              colors: [Colors.white, color, color.withBlue(5000)],
+              //stops: _stops
+            )),
+        child: path == null
+            ? Center(child: FaIcon(icon, size: 120, color: Colors.white))
+            : Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: SvgPicture.asset(path, color: Colors.white),
+              ),
       ),
       onTap: () => Navigator.pushNamed(context, destination),
     );

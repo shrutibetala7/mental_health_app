@@ -1,7 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:google_sign_in/google_sign_in.dart';
-import 'package:well_being_app/tiles/meditation.dart';
-import 'package:well_being_app/screens/profile_page.dart';
+import 'package:provider/provider.dart';
+import 'package:well_being_app/screens/journal/gratitude.dart';
+import 'package:well_being_app/screens/journal/journal_page.dart';
+import 'package:well_being_app/screens/journal/note.dart';
+import 'package:well_being_app/services/user.dart';
 
 class StepperWidget extends StatefulWidget {
   const StepperWidget({Key key}) : super(key: key);
@@ -49,7 +52,7 @@ class _StepperWidgetState extends State<StepperWidget> {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
+    User user = Provider.of<User>(context);
     return Drawer(
       child: Column(
         children: <Widget>[
@@ -109,9 +112,23 @@ class _StepperWidgetState extends State<StepperWidget> {
             onStepTapped: (step) => goTo(step),
             onStepCancel: () => {
               debugPrint("Pressed"),
-              if (currentStep == 1)
+              if (currentStep == 0)
+                {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) {
+                    return Note();
+                  }))
+                }
+              else if (currentStep == 1)
                 {
                   //Navigator.pushNamed(context, 'MeditationScreen'),
+                }
+              else if (currentStep == 2)
+                {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) {
+                    return Gratitude();
+                  }))
                 }
             },
           )

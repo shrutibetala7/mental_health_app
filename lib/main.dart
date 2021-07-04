@@ -8,6 +8,8 @@ import 'package:well_being_app/home_page.dart';
 import 'package:well_being_app/maps/googlemap.dart';
 import 'package:well_being_app/services/auth.dart';
 import 'package:well_being_app/resources/color_palette.dart';
+import 'package:well_being_app/tiles/chatbot.dart';
+import 'package:well_being_app/tiles/ebook.dart';
 import 'package:well_being_app/tiles/meditation.dart';
 import 'package:well_being_app/screens/profile_page.dart';
 import 'package:well_being_app/quotes_page.dart';
@@ -60,6 +62,9 @@ class MyApp extends StatelessWidget {
           'MeditationScreen': (context) => MeditationScreen(),
           'PodcastScreen': (context) => PodcastScreen(),
           'pomodoroScreen': (context) => CountDownTimer(),
+          'ebookScreen': (context) => EbookScreen(),
+          'chatbotScreen': (context) => HomePageDialogflow(),
+          'nearbyWidget': (context) => NearbyWidget()
         },
       ),
     );

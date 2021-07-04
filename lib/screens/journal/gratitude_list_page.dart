@@ -1,6 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:well_being_app/resources/loading.dart';
+import 'package:well_being_app/screens/journal/view_gratitude.dart';
 import 'package:well_being_app/services/database.dart';
 import 'package:well_being_app/services/user.dart';
 
@@ -15,18 +17,55 @@ class _GratitudePageState extends State<GratitudePage> {
   @override
   Widget build(BuildContext context) {
     UserNote user = Provider.of<UserNote>(context);
-    return StreamBuilder<List<UserNote>>(
-      stream: DatabaseService(uid: user.uid).userGratitudeList,
+
+    //Do not use snapshot!=null it throws an error for a split second
+
+    return FutureBuilder<QuerySnapshot>(
+      future: DatabaseService(uid: user.uid)
+          .userInfo
+          .doc(user.uid)
+          .collection('gratitude')
+          .get(),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          List<UserNote> userNote = snapshot.data;
-
           return ListView.builder(
               shrinkWrap: true,
-              itemCount: userNote.length,
+              itemCount: snapshot.data.size,
               itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text(userNote[index].gratitude),
+                Map userNote = snapshot.data.docs[index].data();
+                return InkWell(
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return ViewGratitude(
+                          data: userNote, nid: snapshot.data.docs[index].id);
+                    })).then((value) {
+                      setState(() {});
+                    });
+                  },
+                  child: Card(
+                    margin: EdgeInsets.all(6.0),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            userNote['gratitude'] ?? "Smile. You got this!",
+                            style: TextStyle(fontSize: 24.0),
+                            maxLines: 3,
+                          ),
+                          IconButton(
+                              onPressed: () {
+                                DatabaseService(uid: user.uid)
+                                    .deleteNote(snapshot.data.docs[index].id);
+                                setState(() {});
+                              },
+                              icon: Icon(Icons.delete_outline_rounded))
+                        ],
+                      ),
+                    ),
+                  ),
                 );
               });
         } else {

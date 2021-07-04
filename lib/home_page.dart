@@ -8,7 +8,6 @@ import 'package:well_being_app/services/auth.dart';
 import 'package:well_being_app/screens/journal/journal_page.dart';
 import 'package:well_being_app/screens/profile_page.dart';
 import 'package:well_being_app/resources/color_palette.dart';
-import 'package:well_being_app/services/database.dart';
 import 'package:well_being_app/services/user.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -45,18 +44,17 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Scaffold(
             drawerScrimColor: Colors.transparent,
             appBar: AppBar(
+              title: Text(
+                'My Space',
+                style: TextStyle(
+                    fontSize: 24.0,
+                    letterSpacing: 1.5,
+                    fontWeight: FontWeight.w900),
+              ),
+              centerTitle: true,
               backgroundColor: bg_black,
               toolbarHeight: 60,
               elevation: 0.0,
-              actions: <Widget>[
-                ElevatedButton.icon(
-                  icon: Icon(Icons.person),
-                  onPressed: () async {
-                    await _auth.signOut();
-                  },
-                  label: Text('logout'),
-                )
-              ],
             ),
             //Drawer is side pop up
             //inside the drawer we have the stepper widget

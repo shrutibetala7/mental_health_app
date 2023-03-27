@@ -16,7 +16,6 @@ import 'package:well_being_app/quotes_page.dart';
 import 'package:well_being_app/tiles/podcast_screen.dart';
 import 'package:well_being_app/tiles/pomodoro.dart';
 
-import 'quotes_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -43,7 +42,7 @@ class MyApp extends StatelessWidget {
           ),
           elevatedButtonTheme: ElevatedButtonThemeData(
             style: ElevatedButton.styleFrom(
-                primary: bg_dark1,
+                backgroundColor: bg_dark1,
                 textStyle: TextStyle(
                   fontSize: 16,
                   color: Colors.white,

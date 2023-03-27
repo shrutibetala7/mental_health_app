@@ -67,7 +67,7 @@ class _JournalScreenState extends State<JournalScreen> {
                       children: [
                         ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                              primary: journal_bg_dark1,
+                              backgroundColor: journal_bg_dark1,
                               padding: EdgeInsets.all(12.0),
                             ),
                             onPressed: () {

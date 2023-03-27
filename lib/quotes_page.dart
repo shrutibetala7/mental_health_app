@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import "package:well_being_app/resources/quote_list.dart";
 import 'package:shimmer/shimmer.dart';
 import 'dart:math';
-import 'package:well_being_app/home_page.dart';
 
 class QuoteScreen extends StatelessWidget {
   const QuoteScreen({Key key}) : super(key: key);

@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -59,12 +58,11 @@ class NearbyWidgetState extends State {
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Colors.pink,
-        brightness: Brightness.dark,
         title: Text(
           'Nearby API',
           style: TextStyle(color: Colors.white),
         ),
-        elevation: 0.2,
+        elevation: 0.2, systemOverlayStyle: SystemUiOverlayStyle.light,
       ),
       body: Stack(children: <Widget>[
         MapmyIndiaMap(

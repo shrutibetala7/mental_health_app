@@ -84,10 +84,9 @@ class _SignInState extends State<SignIn> {
                     child: Text('Sign In'),
                     style: ElevatedButton.styleFrom(
                       padding:
-                          EdgeInsets.symmetric(horizontal: 80, vertical: 14),
+                          EdgeInsets.symmetric(horizontal: 80, vertical: 14), backgroundColor: bg_black,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20)),
-                      primary: bg_black,
                     ),
                   ),
                 ]),

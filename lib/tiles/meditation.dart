@@ -20,7 +20,7 @@ class _MeditationScreenState extends State<MeditationScreen> {
       if (_isPlaying) {
         player.stop();
       } else {
-        player = cache.play('audio/meditate1.mp3') as AudioPlayer;
+        player = cache.load('audio/meditate1.mp3') as AudioPlayer;
       }
       debugPrint(string);
     }

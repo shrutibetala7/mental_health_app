@@ -85,10 +85,9 @@ class _RegisterState extends State<Register> {
                     child: Text('Sign Up'),
                     style: ElevatedButton.styleFrom(
                       padding:
-                          EdgeInsets.symmetric(horizontal: 80, vertical: 14),
+                          EdgeInsets.symmetric(horizontal: 80, vertical: 14), backgroundColor: bg_black,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20)),
-                      primary: bg_black,
                     ),
                   ),
                 ]),

@@ -2,9 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:well_being_app/screens/journal/gratitude.dart';
-import 'package:well_being_app/screens/journal/journal_page.dart';
 import 'package:well_being_app/screens/journal/note.dart';
-import 'package:well_being_app/services/user.dart';
 
 class StepperWidget extends StatefulWidget {
   const StepperWidget({Key key}) : super(key: key);
@@ -64,6 +62,7 @@ class _StepperWidgetState extends State<StepperWidget> {
                   flex: 2,
                   child: CircleAvatar(
                     radius: 40,
+                    child: Image.network('https://image.similarpng.com/very-thumbnail/2022/02/Marine-animal-kawaii-character-baby-fairytale-unicorn-on-transparent-background-PNG.png'),
                   ),
                 ),
                 Expanded(
@@ -74,6 +73,13 @@ class _StepperWidgetState extends State<StepperWidget> {
                       color: Colors.blueAccent,
                       borderRadius: BorderRadius.circular(10),
                     ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text("Hey! Good Morning",style: TextStyle(fontSize: 18.0,fontWeight: FontWeight.w600,color: Colors.white),),
+                        Text("Andy",style: TextStyle(fontSize: 18.0,fontWeight: FontWeight.w800))
+                      ],
+                    ),
                   ),
                 ),
               ],
@@ -81,14 +87,16 @@ class _StepperWidgetState extends State<StepperWidget> {
           ),
           Stepper(
             //for changing the continue and cancel button design
-            controlsBuilder: (BuildContext context,
-                {VoidCallback onStepContinue, var onStepCancel}) {
+            controlsBuilder: (BuildContext context, ControlsDetails dtl) {
               return Row(
                 children: [
                   ElevatedButton(
-                    onPressed: onStepCancel,
-                    child: Text(
-                        (currentStep == 1) ? "Take Me There" : "Let's Do It"),
+                    onPressed: dtl.onStepCancel,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                          (currentStep == 1) ? "Take Me There" : "Let's Do It"),
+                    ),
                     // style: ButtonStyle(
                     //     backgroundColor:
                     //         MaterialStateProperty.all<Color>(Colors.black),
@@ -96,8 +104,11 @@ class _StepperWidgetState extends State<StepperWidget> {
                   ),
                   SizedBox(width: 10.0),
                   ElevatedButton(
-                    onPressed: onStepContinue,
-                    child: Text("Done"),
+                    onPressed: dtl.onStepContinue,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text("Done"),
+                    ),
                     // style: ButtonStyle(
                     //     backgroundColor:
                     //         MaterialStateProperty.all<Color>(Colors.amber)),

@@ -50,8 +50,8 @@ class PodcastScreen extends StatelessWidget {
                   ),
                 ));
           },
-          staggeredTileBuilder: (int index) =>
-              StaggeredTile.count(2, index.isEven ? 2 : 1),
+          // staggeredTileBuilder: (int index) =>
+          //     StaggeredTile.count(2, index.isEven ? 2 : 1),
           mainAxisSpacing: 10.0,
           crossAxisSpacing: 10.0,
         ));

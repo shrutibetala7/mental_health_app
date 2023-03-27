@@ -9,7 +9,7 @@ Steps to reproduce the code on local machine:
    Go to File -> Invalidate Caches / Restart
    Or open terminal run "flutter clean"
    Remove pubspec.lock
-   Double check the Flutter SDK Path config correcty - https://tppr.me/qn6dP
+ 
    Or open the terminal and try this script:
    flutter clean
    flutter pub cache repair
@@ -18,14 +18,15 @@ Steps to reproduce the code on local machine:
 
 Snippets from the application
 
-![Splash screen](https://user-images.githubusercontent.com/66972443/228066555-7e14fd60-b069-4f7a-8a18-c8257388fdb9.jpeg)
+![Screenshot 2023-03-28 at 2 03 26 AM Medium](https://user-images.githubusercontent.com/66972443/228067106-3f22e404-0b49-473f-a862-60ef6d392748.jpeg)
 
 
 
-https://user-images.githubusercontent.com/66972443/228066726-3ce92e24-d4e1-4867-859a-be40c0ad0a4c.mov
+
+https://user-images.githubusercontent.com/66972443/228066726-3ce92e24-d4e1-4867-859a-be40c0ad0a4c.mov https://user-images.githubusercontent.com/66972443/228065584-12c52f5d-4a13-4b6c-a1f1-167a13785970.mov
 
 
 
-https://user-images.githubusercontent.com/66972443/228065584-12c52f5d-4a13-4b6c-a1f1-167a13785970.mov
+
 
 

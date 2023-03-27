@@ -18,9 +18,14 @@ Steps to reproduce the code on local machine:
 
 Snippets from the application
 
-![Splash screen](https://user-images.githubusercontent.com/66972443/228064969-86b84156-3bfc-4f70-9bc0-cfc42d4d78c0.jpeg)
+![Splash screen](https://user-images.githubusercontent.com/66972443/228066555-7e14fd60-b069-4f7a-8a18-c8257388fdb9.jpeg)
 
-https://user-images.githubusercontent.com/66972443/228064800-edf625b5-4eca-45a5-8ff7-a3b2109bfaed.mov
+
+
+https://user-images.githubusercontent.com/66972443/228066726-3ce92e24-d4e1-4867-859a-be40c0ad0a4c.mov
+
+
 
 https://user-images.githubusercontent.com/66972443/228065584-12c52f5d-4a13-4b6c-a1f1-167a13785970.mov
+
 
